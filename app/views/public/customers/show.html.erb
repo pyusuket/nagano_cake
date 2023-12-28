@@ -8,29 +8,21 @@
       </div>
     </div>
   </div>
-  <div>
+  <div class="row">
     <h2><strong>登録情報</strong></h2>
       <div class="actions">
-        <%= link_to '編集する', "#" ,class:"btn btn-success" ,style:"padding: 0px 20px;"%>
+        <%= link_to '編集する', customers_information_edit_path ,class:"btn btn-success" ,style:"padding: 0px 20px;"%>
       </div>
   </div>
-  <div class='col-md-8 offset-md-1'>
-    <table class='table .table-bordered'>
-      <thead>
-        <tr>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-        <tbody>
-            <tr>
-              <td>氏名</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-        </tbody>
-      </table>
+  <div class='col-md-8'>
+    <table class='table' border="1">
+      <tr><th bgcolor="#EEEEEE">氏名</th><td><%= @customer.last_name + '　' + @customer.first_name %></td></tr>
+      <tr><th bgcolor="#EEEEEE">カナ</th><td><%= @customer.last_name_kana + '　' + @customer.first_name_kana %></td></tr>
+      <tr><th bgcolor="#EEEEEE">郵便番号</th><td><%= @customer.postal_code %></td></tr>
+      <tr><th bgcolor="#EEEEEE">住所</th><td><%= @customer.address %></td></tr>
+      <tr><th bgcolor="#EEEEEE">電話番号</th><td><%= @customer.telephone_number %></td></tr>
+      <tr><th bgcolor="#EEEEEE">メールアドレス</th><td><%= @customer.email %></td></tr>
+    </table>
   </div>
   
   <div>
