@@ -10,4 +10,13 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
   sessions: "admin/sessions"
 }
 
+  namespace :admin do
+    resources :items, only: [:index]
+    get '/' => 'homes#top'
+  end
+  
+  scope module: :public do
+    resources :items, only: [:index]
+  end
+
 end
