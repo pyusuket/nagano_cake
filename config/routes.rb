@@ -12,11 +12,14 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
 
   namespace :admin do
     resources :items, only: [:index]
-    get '/' => 'homes#top'
+    get 'homes/top' => 'homes#top'
   end
   
   scope module: :public do
     resources :items, only: [:index]
+    get '/homes/top' => 'homes#top'
+    get '/about' => 'homes#about'
+    get '/customers/my_page' => 'customers#show'
   end
 
 end
