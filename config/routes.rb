@@ -21,6 +21,9 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
     get '/about' => 'homes#about'
     get '/customers/my_page' => 'customers#show'
     get '/customers/information/edit' => 'customers#edit'
+    patch '/customers/update' => 'customers#update'
+    get '/customers/confirm' => 'customers#confirm'
+    patch '/customers/destroy' => 'customers#withdraw'
   end
 
 end
