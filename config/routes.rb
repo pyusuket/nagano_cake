@@ -11,13 +11,14 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
 }
 
   namespace :admin do
-    resources :items, only: [:index]
-    get 'homes/top' => 'homes#top'
+    patch '/items/:id' => 'items#update', as: 'admin_item_update' 
+    resources :items
+    get '/homes/top' => 'homes#top', as: 'homes_top'
   end
   
   scope module: :public do
-    resources :items, only: [:index]
-    get '/homes/top' => 'homes#top'
+    resources :items, only: [:index, :show]
+    get '/top' => 'homes#top'
     get '/about' => 'homes#about'
     get '/customers/my_page' => 'customers#show'
     get '/customers/information/edit' => 'customers#edit'

@@ -1,0 +1,56 @@
+<div class='container'>
+  <div class="row" style="margin: 30px 0px ; margin-left: -200px;">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 ml-auto mr-auto text-left">
+      <div class="page_title_box">
+        <span class="page_title">
+          <strong>商品一覧</strong>
+        </span>
+      </div>
+      <div>
+        <%= link_to new_admin_item_path,class:"nav-link text-light" do %>
+        <i class="fas fa-plus-circle"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class='col-md-10 offset-md-1'>
+    <table class='table table-inverse'>
+      <thead>
+        <tr>
+          <th bgcolor="#EEEEEE">商品ID</th>
+          <th bgcolor="#EEEEEE">商品名</th>
+          <th bgcolor="#EEEEEE">税抜き価格</th>
+          <th bgcolor="#EEEEEE">ジャンル</th>
+          <th bgcolor="#EEEEEE">ステータス</th>
+        </tr>
+      </thead>
+        <tbody>
+          <% @items.each do |item| %>
+            <tr>
+              <td><%= item.id %></td>
+              <td><%= link_to item.name, admin_item_path(item) ,style: "color: black; text-decoration: underline;" %></td>
+              <td><%= item.price %></td>
+              <td>
+                <% if item.genre_id == 1 %>
+                  ケーキ
+                <% elsif item.genre_id == 2 %>
+                  プリン
+                <% elsif item.genre_id == 3 %>
+                  焼き菓子
+                <% elsif item.genre_id == 4 %>
+                  キャンディ
+                <% end %>
+              </td>
+              <td class="<%= item.sale_status ? 'text-success fw-bold' : 'text-secondary' %>">
+                <% if item.sale_status == true %>
+                  <strong>販売中</strong>
+                <% else item.sale_status == false %>
+                  販売停止中
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+      </table>
+    </div>
+</div>

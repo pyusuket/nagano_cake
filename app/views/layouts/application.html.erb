@@ -20,7 +20,7 @@
             <ul class="navbar-nav ml-auto">
             <% if admin_signed_in? %>
               <li>
-                <%= link_to "商品一覧", "#" ,class:"btn btn-outline-dark mr-4" %>
+                <%= link_to "商品一覧", admin_items_path ,class:"btn btn-outline-dark mr-4" %>
               </li>
               <li>
                 <%= link_to "会員一覧", "#" ,class:"btn btn-outline-dark mr-4" %>
@@ -39,7 +39,7 @@
                 <%= link_to "マイページ", customers_my_page_path ,class:"btn btn-outline-dark mr-4" %>
               </li>
               <li>
-                <%= link_to "商品一覧", "#" ,class:"btn btn-outline-dark mr-4" %>
+                <%= link_to "商品一覧", items_path ,class:"btn btn-outline-dark mr-4" %>
               </li>
               <li>
                 <%= link_to "カート", "#" ,class:"btn btn-outline-dark mr-4" %>

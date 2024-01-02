@@ -8,57 +8,72 @@
       </div>
     </div>
   </div>
-  <div class="row">
-     <div class="col-md-8 mr-auto">
-    <%= form_with model: @customer , url:customers_update_path do |f| %>
-      <div class="field">
-        <%= f.label :名前 %>
-        <%= f.text_field :last_name, autofocus: true, autocomplete: "given-name" ,placeholder: "令和" %>
-        <%= f.text_field :first_name, autofocus: true, autocomplete: "given-name" ,placeholder: "道子" %>
+<div class="row">
+  <div class="col-md-10">
+    <%= form_with model: @customer, url: customers_update_path do |f| %>
+      <div class="row">
+        <div class="col-md-4" style="padding-left: 80px; margin-bottom: 10px;">
+          <%= f.label :名前 %>
+        </div>
+        <div class="col-md-8" style="margin-bottom: 10px;">
+          <%= f.text_field :last_name, autofocus: true, autocomplete: "given-name", placeholder: "令和" ,class: "rounded" %>
+          <%= f.text_field :first_name, autofocus: true, autocomplete: "given-name" ,placeholder: "道子" ,class: "rounded"%>
+        </div>
       </div>
-      <div class="field">
-        <%= f.label :フリガナ %>
-        <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "given-name" ,placeholder: "レイワ" %>
-        <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "given-name" ,placeholder: "ミチコ" %>
+      <div class="row">
+        <div class="col-md-4" style="padding-left: 80px; margin-bottom: 10px;">
+          <%= f.label :フリガナ %>
+        </div>
+        <div class="col-md-8" style="margin-bottom: 10px;">
+          <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "given-name", placeholder: "レイワ" ,class: "rounded"%>
+          <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "given-name", placeholder: "ミチコ" ,class: "rounded"%>
+        </div>
       </div>
-      <div class="field">
-        <%= f.label :郵便番号%>
-        <%= f.text_field :postal_code, autofocus: true ,placeholder: "00000000" %>
+      <div class="row">
+        <div class="col-md-4" style="padding-left: 80px; margin-bottom: 10px;" >
+          <%= f.label :郵便番号 %>
+        </div>
+        <div class="col-md-8" style="margin-bottom: 10px;">
+          <%= f.text_field :postal_code, autofocus: true, placeholder: "00000000" ,class: "rounded"%>
+        </div>
       </div>
-      <div class="field">
-        <%= f.label :住所 %>
-        <%= f.text_field :address, autofocus: true ,placeholder: "東京都渋谷区代々木神園町0-0" %>
+      <div class="row">
+        <div class="col-md-4" style="padding-left: 80px; margin-bottom: 10px;">
+          <%= f.label :住所 %>
+        </div>
+        <div class="col-md-8" style="margin-bottom: 10px;">
+          <%= f.text_field :address, autofocus: true, placeholder: "東京都渋谷区代々木神園町0-0" ,class: "rounded",  style: "width: 100%; "%>
+        </div>
       </div>
-      <div class="field">
-        <%= f.label :電話番号 %>
-        <%= f.text_field :telephone_number, autofocus: true ,placeholder: "00000000000" %>
+      <div class="row">
+        <div class="col-md-4" style="padding-left: 80px; margin-bottom: 10px;">
+          <%= f.label :電話番号 %>
+        </div>
+        <div class="col-md-8" style="margin-bottom: 10px;">
+          <%= f.text_field :telephone_number, autofocus: true, placeholder: "00000000000" ,class: "rounded"%>
+        </div>
       </div>
-      <div class="field">
-        <%= f.label :メールアドレス %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" ,placeholder: "sample@example.com" %>
+      <div class="row">
+        <div class="col-md-4" style="padding-left: 80px; margin-bottom: 10px;">
+          <%= f.label :メールアドレス %>
+        </div>
+        <div class="col-md-8" style="margin-bottom: 20px;">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" ,class: "rounded"%>
+        </div>
       </div>
-      <div class="actions">
-        <% if @customer = current_customer %>
-          <%= f.submit '編集内容を保存',class:"btn btn-success" ,style:"padding: 3px 55px;"%>
-        <% end %>
-      </div>
-      <div class="actions">
-        <% if @customer = current_customer %>
-          <%= link_to '退会する', customers_confirm_path ,class:"btn btn-sm btn-danger" ,style:"padding: 3px 55px;"%>
-        <% end %>
+      <div class="row">
+        <div class="col-md-8 ml-auto", style="display: flex; justify-content: space-between;">
+          <% if @customer == current_customer %>
+            <%= f.submit '編集内容を保存', class: "btn btn-success", style: "padding: 3px 40px;" %>
+          <% end %>
+          <% if @customer == current_customer %>
+            <%= link_to '退会する', customers_confirm_path, class: "btn btn-sm btn-danger", style: "padding: 3px 20px; margin-left: 50px;" %>
+          <% end %>
+        </div>
       </div>
     <% end %>
-    </div>
-  </div>
-    <div class="row" style="margin: 30px 0px ; margin-left: -200px;">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 ml-auto mr-auto text-left">
-      <div class="page_title_box">
-        <span class="page_title">
-          <strong>既に登録済みの方</strong>
-        </span>
-      </div>
-    </div>
   </div>
 </div>
+
 
 
