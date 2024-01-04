@@ -1,17 +1,17 @@
 <div class='container'>
-  <div class="row" style="margin: 30px 0px ; margin-left: -200px;">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 ml-auto mr-auto text-left">
+  <div class="row" style="margin: 30px 0px ; ">
+    <div class="col-sm-12 col-md-8 col-lg-8 px-5 px-sm-0 ml-auto mr-auto text-left">
       <div class="page_title_box">
         <span class="page_title">
           <strong>商品一覧</strong>
         </span>
       </div>
-      <div>
-        <%= link_to new_admin_item_path,class:"nav-link text-light" do %>
-        <i class="fas fa-plus-circle"></i>
+      </div>
+      <div class="col-md-2">
+        <%= link_to new_admin_item_path, class: "rounded-circle text-center", style: "font-size: 32px; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; background-color: white; color: white; text-decoration: none; box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.25);" do %>
+          <i class="fa-sharp fa-solid fa-plus" style="color: #9e9e9e;"></i>
         <% end %>
       </div>
-    </div>
   </div>
   <div class='col-md-10 offset-md-1'>
     <table class='table table-inverse'>
@@ -29,7 +29,7 @@
             <tr>
               <td><%= item.id %></td>
               <td><%= link_to item.name, admin_item_path(item) ,style: "color: black; text-decoration: underline;" %></td>
-              <td><%= item.price %></td>
+              <td><%= number_with_delimiter(item.price) %></td>
               <td>
                 <% if item.genre_id == 1 %>
                   ケーキ
@@ -52,5 +52,6 @@
           <% end %>
           </tbody>
       </table>
+      <%= paginate @items %>
     </div>
 </div>

@@ -10,7 +10,7 @@
   </div>
   <div class="row">
   <div class="col-md-10">
-    <%= form_with model: Item.new , url: admin_items_path do |f| %>
+    <%= form_with model: @item, url: admin_items_path, local: true do |f| %>
       <div class="row">
         <div class="col-md-4" style="padding-left: 80px; margin-bottom: 10px;">
           <%= f.label :商品画像 %>
@@ -57,11 +57,11 @@
         </div>
         <div class="col-md-8" style="margin-bottom: 20px;">
           <%= f.radio_button :sale_status, :true ,checked: true%>販売中
-          <%= f.radio_button :sale_status, :flase %>販売停止中
+          <%= f.radio_button :sale_status, :false %>販売停止中
         </div>
       </div>
       <div class="row">
-        <div class="col-md-8 ml-auto", style="display: flex; justify-content: space-between;">
+        <div class="col-md-8 ml-auto" style="display: flex; justify-content: space-between;">
           <% if @customer == current_customer %>
             <%= f.submit '新規登録', class: "btn btn-success", style: "padding: 3px 40px;" %>
           <% end %>

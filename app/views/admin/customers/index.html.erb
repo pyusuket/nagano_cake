@@ -1,0 +1,39 @@
+<div class='container'>
+  <div class="row" style="margin: 30px 0px ; ">
+    <div class="col-sm-12 col-md-8 col-lg-8 px-5 px-sm-0 ml-auto mr-auto text-left">
+      <div class="page_title_box">
+        <span class="page_title">
+          <strong>会員一覧</strong>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class='col-md-10 offset-md-1'>
+    <table class='table table-inverse'>
+      <thead>
+        <tr>
+          <th bgcolor="#EEEEEE">会員ID</th>
+          <th bgcolor="#EEEEEE">氏名</th>
+          <th bgcolor="#EEEEEE">メールアドレス</th>
+          <th bgcolor="#EEEEEE">ステータス</th>
+        </tr>
+      </thead>
+        <tbody>
+          <% @customers.each do |customer| %>
+            <tr>
+              <td><%= customer.id %></td>
+              <td><%= link_to customer.last_name + customer.first_name, admin_customer_path(customer) ,style: "color: black; text-decoration: underline;" %></td>
+              <td><%= customer.email %></td>
+              <td class="<%= customer.is_active ? 'text-success fw-bold' : 'text-secondary' %>">
+                <% if customer.is_active == true %>
+                  <strong>有効</strong>
+                <% else %>
+                  退会
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+      </table>
+    </div>
+</div>

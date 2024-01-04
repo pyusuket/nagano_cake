@@ -11,8 +11,9 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
 }
 
   namespace :admin do
-    patch '/items/:id' => 'items#update', as: 'admin_item_update' 
+    patch '/items/:id' => 'items#update'
     resources :items
+    resources :customers, only: [:index ,:show ,:edit]
     get '/homes/top' => 'homes#top', as: 'homes_top'
   end
   

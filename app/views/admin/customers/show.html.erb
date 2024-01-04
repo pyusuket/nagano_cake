@@ -1,0 +1,82 @@
+<div class='container'>
+  <div class="row" style="margin: 30px 0px;">
+    <div class="col-md-8">
+      <div class="page_title_box">
+        <span class="page_title">
+          <strong><%= @customer.last_name + @customer.first_name %></strong>さんの<strong>会員詳細</strong>
+        </span>
+          <div class="row">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-sm-4">
+                <label>会員ID</label>
+              </div>
+              <div class="col-sm-8">
+                <%= @customer.id %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4">
+                <label>氏名</label>
+              </div>
+              <div class="col-sm-8">
+                <%= @customer.last_name + @customer.first_name %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4">
+                <label>フリガナ</label>
+              </div>
+              <div class="col-sm-8">
+                <%= @customer.last_name_kana + @customer.first_name_kana %>
+            </div>
+            </div>
+              <div class="row">
+              <div class="col-sm-4">
+                <label>郵便番号</label>
+              </div>
+              <div class="col-sm-8">
+                <%= @customer.postal_code %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4">
+                <label>住所</label>
+              </div>
+              <div class="col-sm-8">
+                <%= @customer.address %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4">
+                <label>電話番号</label>
+              </div>
+              <div class="col-sm-8">
+                <%= @customer.telephone_number %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4">
+                <label>メールアドレス</label>
+              </div>
+              <div class="col-sm-8">
+                <%= @customer.email %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4">
+                <label>会員ステータス</label>
+              </div>
+              <div class="col-sm-8">
+                <%= @customer.is_active %>
+              </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="row">
+    <div class="col-md-8 ml-auto" style="display: flex; justify-content: space-between;">
+          <%= link_to '編集する', edit_admin_customer_path(@customer) ,class: "btn btn-success", style: "padding: 5px 20px;" %>
+          <%= link_to '注文一覧を見る', admin_homes_top_path ,class: "btn btn-primary", style: "padding: 5px 20px;" %>
+    </div>
+  </div>
