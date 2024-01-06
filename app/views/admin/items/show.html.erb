@@ -51,7 +51,7 @@
           <label>税抜き価格</label>
         </div>
         <div class="col-sm-8">
-          <%= @item.price*1.10 %>円 (<%= @item.price %>)
+          <%= number_with_delimiter((@item.price * 1.10).round) %>  (<%= number_with_delimiter(@item.price) %>)円
         </div>
       </div>
       <div class="row">
@@ -59,7 +59,11 @@
           <label>販売ステータス</label>
         </div>
         <div class="col-sm-8">
-          <%= @item.sale_status %>
+            <% if @item.sale_status %>
+              販売中
+            <% else %>
+              販売停止中
+            <% end %>
         </div>
       </div>
     </div>

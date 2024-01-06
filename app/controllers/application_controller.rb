@@ -16,11 +16,11 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource)
     case resource
     when Admin
-      admin_homes_top_path
+      new_admin_seesion_path
     when Customer
-      homes_top_path
+      new_customer_seesion_path
     else
-      admin_homes_top_path
+      new_customer_session_path
     end
   end
   
