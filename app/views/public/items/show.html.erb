@@ -1,13 +1,12 @@
 <div class='container'>
   <div class="row">
     <div class="col-md-4">
-    
       <%= image_tag(@item.image, size: '250x200') %>
     </div>
     <div class="col-md-8">
       <div class="image-details", style="margin-top: 20px;">
+        <%= form_with model: CartItem.new do |f| %>
         <div>
-          <%= form_with model: CartItem.new do |f| %>
           <strong><%= @item.name %></strong><br>
           <%= @item.introduction %><br>
         </div>
@@ -21,8 +20,8 @@
           <%= f.hidden_field :item_id, value: @item.id %>
           <%= f.submit 'カートに入れる', class: "btn btn-success", style: "padding: 3px 20px;" %>
         </div>
+        <% end %>
       </div>
     </div>
-    <% end %>
   </div>
 </div>

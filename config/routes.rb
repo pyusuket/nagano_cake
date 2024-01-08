@@ -19,7 +19,9 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
   
   scope module: :public do
     resources :items, only: [:index, :show]
+    delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :cart_items
+    resources :orders, only: [:index, :show, :new, :create]
     get '/top' => 'homes#top'
     get '/about' => 'homes#about'
     get '/customers/my_page' => 'customers#show'
@@ -27,6 +29,7 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
     patch '/customers/update' => 'customers#update'
     get '/customers/confirm' => 'customers#confirm'
     patch '/customers/destroy' => 'customers#withdraw'
+    
   end
 
 end
