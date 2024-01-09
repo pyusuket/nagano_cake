@@ -1,0 +1,82 @@
+<div class='container'>
+  <div class="row" style="margin: 30px 0px ;">
+    <div class="col-sm-12">
+      <div class="page_title_box">
+        <span class="page_title">
+          <strong>注文情報確認</strong>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class='col-md-8'>
+      <table class='table'>
+        <thead>
+          <tr>
+            <th bgcolor="#EEEEEE" colspan="2">商品名</th>
+            <th bgcolor="#EEEEEE">単価（税込）</th>
+            <th bgcolor="#EEEEEE">数量</th>
+            <th bgcolor="#EEEEEE">小計</th>
+            <th bgcolor="#EEEEEE"></th>
+          </tr>
+        </thead>
+        <tbody>
+            <% @cart_items.each do |cart_item| %>
+            <tr>
+              <td><%= image_tag(cart_item.item.get_image(200,60)) %></td>
+              <td><strong><%= cart_item.item.name %></strong></td>
+              <td><%= number_with_delimiter(cart_item.item.with_tax_price) %></td>
+              <td><%= cart_item.amount %></td>
+              <td><%= number_with_delimiter(cart_item.subtotal) %></td>
+              <% @total_amount += cart_item.subtotal %>
+            </tr>
+          <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-3">
+      <div class="d-flex justify-content-center">
+        <table class='table'>
+          <tr>
+            <td style="background-color: #EEEEEE;">送料</td>
+            <td>800</td>
+          </tr>
+          <tr>
+            <td style="background-color: #EEEEEE;">商品金額</td>
+            <td><%= number_with_delimiter(@total_amount) %></td>
+          </tr>
+          <tr>
+            <td style="background-color: #EEEEEE;">請求金額</td>
+            <td><%= number_with_delimiter(@total_amount + 800) %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+    <div class="row">
+      <div class="col-md-12 offset-md-1">
+        <h4><strong>支払方法</strong></h4>
+        <%= @order.payment_method %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 offset-md-1">
+        <h4><strong>お届け先</strong></h4>
+        <%= @order.address %>
+      </div>
+    </div>
+    <div class="text-center">
+      <%= link_to '注文を確定する', orders_thanks_path ,class: "btn btn-sm btn-success mx-auto" , style:"padding: 5px 40px;" %>
+    </div>
+  </div>
+    <%= form_with model: @order , url: orders_path , method: :post do |f| %>
+      <%= f.hidden_field :customer_id , value: @customer_id %>
+      <%= f.hidden_field :name %>
+      <%= f.hidden_field :postal_code %>
+      <%= f.hidden_field :address %>
+      <%= f.hidden_field :postage %>
+      <%= f.hidden_field :payment_method %>
+      <%= f.hidden_field :total_payment %>
+      <%= f.hidden_field :order_status %>
+    <% end %>

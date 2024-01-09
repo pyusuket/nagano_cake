@@ -20,6 +20,8 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
   scope module: :public do
     resources :items, only: [:index, :show]
     delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
+    post '/orders/confirm' => 'orders#confirm'
+    get '/orders/thanks' => 'orders#thanks'
     resources :cart_items
     resources :orders, only: [:index, :show, :new, :create]
     get '/top' => 'homes#top'

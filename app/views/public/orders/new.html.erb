@@ -9,25 +9,59 @@
     </div>
   </div>
   <div>
-    <%= form_with model: @order do |f| %>
-    <h3><strong>支払方法</strong></h3>
-    <div>
-      <%= f.radio_button :payment_method, "credit_card" , checked:true %>
-      <%= f.label :payment_method_credit_card, "クレジットカード" %></br>
-      <%= f.radio_button :payment_method, "transfer" %>
-      <%= f.label :payment_method_transfer, "銀行振込" %>
-    </div>
+    <%= form_with model: Order.new ,method: :post , url: orders_confirm_path do |f| %>
+    <h4><strong>支払方法</strong></h4>
+      <div class="row">
+        <div class="col-md-12 offset-md-1">
+          <%= f.radio_button :payment_method, Order.payment_methods.key(0) , checked:true %>
+          <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
+        </div>
+        <div class="col-md-12 offset-md-1">
+          <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+          <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
+        </div>
+      </div>
     <h3><strong>お届け先</strong></h3>
-    <div>
-      <%= f.radio_button :payment_method, "credit_card" , checked:true%>
-      <%= f.label :payment_method_credit_card, "ご自身のご住所" %></br>
-      <%= f.radio_button :payment_method, "transfer" %>
-      <%= f.label :payment_method_transfer, "登録済み住所から選択" %></br>
-      <%= f.radio_button :payment_method, "transfer" %>
-      <%= f.label :payment_method_transfer, "新しい住所から選択" %>
+    <div class="row">
+        <div class="col-md-12 offset-md-1">
+          <%= f.radio_button :address, "address" , checked:true %>
+          <%= f.label :address, "ご自身のご住所" %>
+        </div>
+        <div class="col-md-12 offset-md-2">
+          <%= @customer.address %>
+        </div>
+        <div class="col-md-12 offset-md-1">
+        <%= f.radio_button :payment_method, "transfer" %>
+        <%= f.label :payment_method_transfer, "登録済み住所から選択" %>
+        </div>
+        <div class="col-md-12 offset-md-2">
+          <%= f.select :address, [], include_blank: "---", class: "form-control" %>
+        </div>
+        <div class="col-md-12 offset-md-1">
+        <%= f.radio_button :transfer, "transfer" %>
+        <%= f.label :transfer, "新しい住所から選択" %>
+        </div>
+        <div class="col-md-2 offset-md-2">
+          <%= f.label :郵便番号 %>
+        </div>
+        <div class="col-md-6">
+          <%= f.text_field :postal_code, autofocus: true, placeholder: "00000000" ,class: "rounded"%>
+        </div>
+        <div class="col-md-2 offset-md-2">
+          <%= f.label :住所 %>
+        </div>
+        <div class="col-md-6">
+          <%= f.text_field :delivery_address, autofocus: true, placeholder: "東京都渋谷区代々木神園町0-0" ,class: "rounded",  style: "width: 50%; "%>
+        </div>
+        <div class="col-md-2 offset-md-2">
+          <%= f.label :宛名 %>
+        </div>
+        <div class="col-md-6">
+          <%= f.text_field :name, autofocus: true, placeholder: "令和道子" ,class: "rounded"%>
+        </div>
     </div>
     <div class="text-center">
-      <%= f.submit '確認画面へ進む' ,class: "btn btn-sm btn-primary" %>
+      <%= f.submit '確認画面へ進む' , class: "btn btn-sm btn-primary" %>
     </div>
     <% end %>
   
