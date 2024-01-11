@@ -1,19 +1,10 @@
+ja:
   enums:
     order:
       payment_method:
         credit_card: "クレジットカード"
         transfer: "銀行振込"
-  
-  enums:
-    order_detail:
-      order_status:
-        wait: "入金待ち"
-        confirm: "入金確認"
-        production: "製作中"
-        preparation: "発送準備中"
-        completion: "発送済み"
-        
-  active_record:
+  activerecord:
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

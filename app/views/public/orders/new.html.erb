@@ -24,22 +24,15 @@
     <h3><strong>お届け先</strong></h3>
     <div class="row">
         <div class="col-md-12 offset-md-1">
-          <%= f.radio_button :address, "address" , checked:true %>
+          <%= f.radio_button :address_option, 0, checked:true %>
           <%= f.label :address, "ご自身のご住所" %>
         </div>
         <div class="col-md-12 offset-md-2">
-          <%= @customer.address %>
+          〒<%= @customer.postal_code + " " + @customer.address %><br><%= @customer.last_name + @customer.first_name %>
         </div>
         <div class="col-md-12 offset-md-1">
-        <%= f.radio_button :payment_method, "transfer" %>
-        <%= f.label :payment_method_transfer, "登録済み住所から選択" %>
-        </div>
-        <div class="col-md-12 offset-md-2">
-          <%= f.select :address, [], include_blank: "---", class: "form-control" %>
-        </div>
-        <div class="col-md-12 offset-md-1">
-        <%= f.radio_button :transfer, "transfer" %>
-        <%= f.label :transfer, "新しい住所から選択" %>
+        <%= f.radio_button :address_option, 1 %>
+        <%= f.label :address, "新しい住所から選択" %>
         </div>
         <div class="col-md-2 offset-md-2">
           <%= f.label :郵便番号 %>
@@ -51,7 +44,7 @@
           <%= f.label :住所 %>
         </div>
         <div class="col-md-6">
-          <%= f.text_field :delivery_address, autofocus: true, placeholder: "東京都渋谷区代々木神園町0-0" ,class: "rounded",  style: "width: 50%; "%>
+          <%= f.text_field :address, autofocus: true, placeholder: "東京都渋谷区代々木神園町0-0" ,class: "rounded",  style: "width: 50%; "%>
         </div>
         <div class="col-md-2 offset-md-2">
           <%= f.label :宛名 %>

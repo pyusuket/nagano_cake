@@ -14,6 +14,7 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
     patch '/items/:id' => 'items#update'
     resources :items
     resources :customers, only: [:index ,:show ,:edit]
+    resources :orders, only: [:show]
     get '/homes/top' => 'homes#top', as: 'homes_top'
   end
   
