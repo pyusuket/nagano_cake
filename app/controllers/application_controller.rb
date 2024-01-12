@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     when Admin
       admin_homes_top_path
     when Customer
-      top_path
+      customers_my_page_path
     else
       top_path
     end
@@ -16,11 +16,11 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource)
     case resource
     when Admin
-      new_admin_seesion_path
+      new_admin_session_path
     when Customer
       new_customer_seesion_path
     else
-      new_customer_session_path
+      top_path
     end
   end
   

@@ -19,20 +19,19 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
   end
   
   scope module: :public do
-    resources :items, only: [:index, :show]
-    delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
     post '/orders/confirm' => 'orders#confirm'
     get '/orders/thanks' => 'orders#thanks'
-    resources :cart_items
-    resources :orders, only: [:index, :show, :new, :create]
     get '/top' => 'homes#top'
     get '/about' => 'homes#about'
     get '/customers/my_page' => 'customers#show'
     get '/customers/information/edit' => 'customers#edit'
-    patch '/customers/update' => 'customers#update'
     get '/customers/confirm' => 'customers#confirm'
+    patch '/customers/update' => 'customers#update'
     patch '/customers/destroy' => 'customers#withdraw'
-    
+    # patch '/cart_item/update' => 'cart_items#update'
+    delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
+    resources :cart_items
+    resources :orders, only: [:index, :show, :new, :create]
+    resources :items, only: [:index, :show]
   end
-
 end
