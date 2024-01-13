@@ -12,7 +12,7 @@
       <%= link_to '退会しない', customers_my_page_path, class: "btn btn-primary", style: "padding: 3px 20px; margin-right: 20px" %>
     <% end %>
     <% if @customer = current_customer %>
-      <%= link_to '退会する', customers_destroy_path(@customer), method: :patch, class: "btn btn-danger", style: "padding: 3px 30px;" %>
+      <%= link_to '退会する', customers_destroy_path(@customer), method: :patch, class: "btn btn-danger", data: {confirm: '本当にを退会しますか？' }, style: "padding: 3px 30px;" %>
     <% end %>
   </div>
 </div>

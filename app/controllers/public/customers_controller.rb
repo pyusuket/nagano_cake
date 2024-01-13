@@ -18,12 +18,11 @@ class Public::CustomersController < ApplicationController
   end
   
   def withdraw
-    @customer = current_customer  
-    if @customer.is_active == true
-      redirect_to customers_my_page_path
-    else
-      @customer.destroy  
-    end
+    @customer = current_customer
+    @customer.is_active = false
+    @customer.update(is_active: false)
+    sign_out @customer
+    redirect_to top_path
   end
   
   def customer_params

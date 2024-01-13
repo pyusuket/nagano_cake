@@ -19,10 +19,9 @@ class Public::CartItemsController < ApplicationController
   
   def update
     @cart_item = CartItem.find(params[:id])
-    logger.debug "params: #{params}" # デバッグログ
-    @cart_item.amount = params[:cart_items][@cart_item.id.to_s][:amount]
-    @cart_item.save
-    redirect_to cart_item_path
+    @cart_item.amount = params[:cart_item][:amount]
+    @cart_item.update(cart_item_params)
+    redirect_to cart_items_path
   end
   
   def destroy_all
