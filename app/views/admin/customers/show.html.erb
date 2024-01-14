@@ -5,7 +5,7 @@
         <span class="page_title">
           <strong><%= @customer.last_name + @customer.first_name %></strong>さんの<strong>会員詳細</strong>
         </span>
-          <div class="row">
+          <div class="row mt-5">
           <div class="col-md-12">
             <div class="row">
               <div class="col-sm-4">
@@ -68,7 +68,11 @@
                 <label>会員ステータス</label>
               </div>
               <div class="col-sm-8">
-                <%= @customer.is_active %>
+                <% if @customer.is_active %>
+                  <p class="text-success fw-bold"><strong>有効</strong></p>
+                <% else %>
+                  <p class="'text-secondary'">退会</p>
+                <% end %>
               </div>
       </div>
     </div>
@@ -77,6 +81,6 @@
   <div class="row">
     <div class="col-md-8 ml-auto" style="display: flex; justify-content: space-between;">
           <%= link_to '編集する', edit_admin_customer_path(@customer) ,class: "btn btn-success", style: "padding: 5px 20px;" %>
-          <%= link_to '注文一覧を見る', admin_homes_top_path ,class: "btn btn-primary", style: "padding: 5px 20px;" %>
+          <%= link_to '注文一覧を見る', admin_order_path(@customer),class: "btn btn-primary", style: "padding: 5px 20px;" %>
     </div>
   </div>

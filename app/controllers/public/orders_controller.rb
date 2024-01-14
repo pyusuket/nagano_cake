@@ -10,8 +10,10 @@ class Public::OrdersController < ApplicationController
   end
   
   def show
-   @orders = current_customer.orders.find(params[:id])
-   @order_details = OrderDetail.all
+    @order = Order.find(params[:id])
+    @customer = Customer.find_by(id: @order.customer_id)
+    @order_details = @order.order_details.page(params[:page]).per(10)
+    @order_details_total = @order_details.sum { |detail| detail.price * detail.amount }
   end
   
   def create

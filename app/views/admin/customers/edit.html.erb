@@ -1,0 +1,76 @@
+<div class='container'>
+  <div class="row" style="margin: 30px 0px;">
+    <div class="col-md-8">
+      <div class="page_title_box">
+        <span class="page_title">
+          <strong><%= @customer.last_name + @customer.first_name %></strong>さんの<strong>会員情報編集</strong>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3 mt-2">
+      <label>会員ID</label>
+    </div>
+    <div class="col-sm-8 mt-2">
+      <%= @customer.id %>
+    </div>
+  </div>
+  <%= form_with model: @customer, url: admin_path, method: :patch do |f| %>
+  <div class="row">
+    <div class="col-sm-3 mt-2">
+      <label>氏名</label>
+    </div>
+    <div class="col-sm-8 mt-2 d-flex">
+      <%= f.text_field :last_name, autofocus: true ,class: "rounded" %>
+      <%= f.text_field :first_name, autofocus: true ,class: "rounded ml-5" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3 mt-2">
+      <label>フリガナ</label>
+    </div>
+    <div class="col-sm-8 mt-2 d-flex">
+      <%= f.text_field :last_name_kana, autofocus: true ,class: "rounded" %>
+      <%= f.text_field :first_name_kana, autofocus: true ,class: "rounded ml-5" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3 mt-2">
+      <label>住所</label>
+    </div>
+    <div class="col-sm-8 mt-2">
+      <%= f.text_field :address, autofocus: true ,class: "rounded" ,style: "width:58%;"%>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3 mt-2">
+      <label>電話番号</label>
+    </div>
+    <div class="col-sm-8 mt-2">
+      <%= f.text_field :telephone_number, autofocus: true ,class: "rounded" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3 mt-2">
+      <label>メールアドレス</label>
+    </div>
+    <div class="col-sm-8 mt-2">
+      <%= f.text_field :email, autofocus: true ,class: "rounded" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3 mt-2">
+      <label>会員ステータス</label>
+    </div>
+    <div class="col-sm-8 mt-2">
+      <%= f.radio_button :is_active, :true ,checked: true%>有効
+      <%= f.radio_button :is_active, :false %>退会
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 offset-md-3 ">
+      <%= f.submit '変更を保存' ,class: "btn btn-success", style: "padding: 5px 20px;" %>
+    </div>
+  </div>
+  <% end %>

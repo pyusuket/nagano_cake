@@ -42,5 +42,15 @@
       <% end %>
     </div>
   </div>
-
-<%= render "public/shared/links" %>
+  <div>
+    <span class="page_title">
+      <strong>会員登録がお済みでない方</strong>
+    </span>
+  </div>
+  <div class="row mt-2">
+    <div class="col-md-11 offset-md-1">
+      <%= link_to new_customer_registration_path, style: "text-decoration: underline;" do %>
+        こちら
+      <% end %>　から新規登録を行ってください。
+    </div>
+  </div>
