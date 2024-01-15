@@ -1,6 +1,6 @@
 <div class='container'>
-  <div class="row" style="margin: 30px 0px ; margin-left: -200px;">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 ml-auto mr-auto text-left">
+  <div class="row" style="margin: 30px 0px ;">
+    <div class="col-md-8">
       <div class="page_title_box">
         <span class="page_title">
           <strong>ログイン</strong>
@@ -16,7 +16,7 @@
   
   <div class="row justify-content-center">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 ml-auto mr-auto">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= form_with model: @customer, url: customer_session_path do |f| %>
         <div class="form-group text-center">
           <div class="row">
             <div class="col">
@@ -42,10 +42,12 @@
       <% end %>
     </div>
   </div>
-  <div>
-    <span class="page_title">
-      <strong>会員登録がお済みでない方</strong>
-    </span>
+  <div class="row">
+    <div class="col-md-8">
+      <span class="page_title">
+        <strong>会員登録がお済みでない方</strong>
+      </span>
+    </div>
   </div>
   <div class="row mt-2">
     <div class="col-md-11 offset-md-1">

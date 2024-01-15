@@ -15,7 +15,7 @@
             <label>購入者</label>
           </div>
           <div class="col-sm-4">
-            <%= link_to @customer.name, admin_customer_path(@customer)  ,style: "color: black; text-decoration: underline;"%>
+            <%= link_to @customer.last_name + @customer.first_name, admin_customer_path ,style: "color: black; text-decoration: underline;"%>
           </div>
         </div>
         <div class="row">
@@ -23,7 +23,7 @@
             <label>注文日</label>
           </div>
           <div class="col-sm-4">
-            <%= @order_details.created_at.strftime("%Y/%-m/%-d") %>
+            <%= @order_detail.created_at.strftime("%Y/%-m/%-d") %>
           </div>
         </div>
         <div class="row">
@@ -31,7 +31,7 @@
             <label>配送先</label>
           </div>
           <div class="col-sm-4">
-            <%= @order_details.order.address %>
+            <%= @order_detail.order.address %>
           </div>
         </div>
         <div class="row">
@@ -39,7 +39,7 @@
             <label>支払方法</label>
           </div>
           <div class="col-sm-4">
-            <%= @order_details.order.payment_method_i18n %>
+            <%= @order_detail.order.payment_method_i18n %>
           </div>
         </div>
         <div class="row">
@@ -47,9 +47,62 @@
             <label>注文ステータス</label>
           </div>
           <div class="col-sm-4">
-            -
+            －　　　<%= link_to '更新', "#" ,class: "btn btn-success", style: "padding: 2px 10px;" %>
           </div>
         </div>
       </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-8">
+      <table class='table'>
+        <thead>
+          <tr>
+            <th bgcolor="#EEEEEE">商品名</th>
+            <th bgcolor="#EEEEEE">単価（税込）</th>
+            <th bgcolor="#EEEEEE">数量</th>
+            <th bgcolor="#EEEEEE">小計</th>
+            <th bgcolor="#EEEEEE">製作ステータス</th>
+            <th bgcolor="#EEEEEE"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order.order_details.each do |order_detail| %>
+            <tr>
+              <td><%= order_detail.item.name %></td>
+              <td><%= number_with_delimiter(order_detail.price) %></td>
+              <td><%= order_detail.amount %></td>
+              <td><%= number_with_delimiter(order_detail.price * order_detail.amount) %></td>
+              <td>－</td>
+              <td><%= link_to '更新', "#", class: "btn btn-success", style: "padding: 2px 10px;" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-4">
+        <div class="row">
+            <div class="col-md-4">
+                <label><strong>商品合計</strong></label>
+            </div>
+            <div class="col-md-8">
+                <%= number_with_delimiter(@order_details_total) %>円
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label><strong>送料</strong></label>
+            </div>
+            <div class="col-md-8">
+                <%= number_with_delimiter(@order_cost) %>円
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label><strong>請求金額合計</strong></label>
+            </div>
+            <div class="col-md-8">
+                <strong><%= number_with_delimiter(@order_cost + @order_details_total) %>円</strong>
+            </div>
+        </div>
     </div>
 </div>
